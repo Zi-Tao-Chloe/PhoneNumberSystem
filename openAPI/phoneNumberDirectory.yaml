@@ -1,0 +1,109 @@
+swagger: "2.0"
+info:
+  title: Phone number directory API
+  description: Phone number directory
+  version: "1.0.0"
+basePath: "/v1"
+tags:
+  - name: phone_numbers
+    description: Customer phone numbers
+  - name: customers
+    description: All customers in the system
+schemes:
+  - "http"
+paths:
+  /customers/{customer_id}:
+    get:
+      tags:
+        - customers
+      summary: Get customer phone numbers
+      description: Return a list of phone numebers of the particular customer
+      operationId: getCustomerPhoneNumbers
+      produces:
+        - application/json
+      parameters:
+        - name: customer_id
+          in: path
+          description: ID of customer
+          required: true
+          type: "integer"
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: "#/definitions/CustomerPhoneNumberArray"
+        '404':
+          description: "Not Found"
+  /phone_numbers:
+    get:
+      tags:
+        - phone_numbers
+      summary: Get all phone numbers
+      description: Return all phone numebers in the system
+      operationId: getAllPhoneNumbers
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: "#/definitions/PhoneNumbersArray"
+        '404':
+          description: "Not Found"
+  /phone_numbers/{phone_number_id}/activate:
+    post:
+      tags:
+        - phone_numbers
+      summary: Activate a particular phone number
+      description: Set a particular phone number to the activated state
+      operationId: activatePhoneNumber
+      produces:
+        - application/json
+      parameters:
+        - name: phone_number_id
+          in: path
+          description: ID of phone number
+          required: true
+          type: "integer"
+      responses:
+        '200':
+          description: activate successfully
+
+definitions:
+  CustomerPhoneNumberArray:
+    type: array
+    items:
+      $ref: '#/definitions/PhoneNumber'
+  PhoneNumbersArray:
+    type: array
+    items:
+      $ref: '#/definitions/PhoneNumber'
+  PhoneNumber:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      phoneNumber:
+        type: string
+        example: '0406961127'
+      isActivated:
+        type: boolean
+        example: false
+  Customer:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      first_name:
+        type: string
+        example: Sherlock
+      last_name:
+        type: string
+        example: Holmes
+      phoneNumberArray:
+        type: array
+        items:
+          $ref: '#/definitions/PhoneNumber'
+
