@@ -1,43 +1,29 @@
 package com.PhoneNumberSystem.Entity;
 
-import com.PhoneNumberSystem.controller.CustomerController;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class PhoneNumber {
     @Id
+    @GeneratedValue
     private Long id;
 
+    @JsonProperty("number")
     private String number;
 
+    @JsonProperty("customerId")
     private Long customerId;
 
+    @JsonProperty("isActivated")
     private boolean isActivated;
-
-    public PhoneNumber(Long id, Long customerId, String number, boolean isActivated) {
-        this.id = id;
-        this.customerId = customerId;
-        this.number = number;
-        this.isActivated = isActivated;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getPhoneNumber() {
-        return number;
-    }
-
-    public boolean isActivated() {
-        return isActivated;
-    }
-
-    public void setActivated(boolean activated) {
-        isActivated = activated;
-    }
 
 }

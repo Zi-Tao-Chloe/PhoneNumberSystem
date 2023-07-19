@@ -19,10 +19,12 @@ public class CustomerController {
         this.phoneNumberService = phoneNumberService;
     }
 
-    @GetMapping(value = "/customers/{customer_id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<?> getCustomerPhoneNumbers(final @PathVariable long customer_id){
-        return ResponseEntity.ok(phoneNumberService.getCustomer(customer_id));
-    }
+
+//    @GetMapping(value = "/customers/{customer_id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+//    public ResponseEntity<?> getCustomerPhoneNumbers(final @PathVariable long customer_id){
+//        return ResponseEntity.ok(phoneNumberService.getCustomer(customer_id));
+//    }
+
 
 
 }
