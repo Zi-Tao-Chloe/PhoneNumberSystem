@@ -1,4 +1,4 @@
-package com.PhoneNumberSystem.Entity;
+package com.PhoneNumberSystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
@@ -17,13 +17,13 @@ public class PhoneNumber {
     @GeneratedValue
     private Long id;
 
-    @JsonProperty("number")
-    private String number;
+    @JsonProperty("phoneNumber")
+    private String phoneNumber;
 
     @JsonProperty("customerId")
     private Long customerId;
 
     @JsonProperty("isActivated")
-    private boolean isActivated;
+    private boolean isActivated = false;
 
 }

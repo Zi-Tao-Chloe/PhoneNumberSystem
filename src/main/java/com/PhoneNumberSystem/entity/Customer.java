@@ -1,4 +1,4 @@
-package com.PhoneNumberSystem.Entity;
+package com.PhoneNumberSystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
