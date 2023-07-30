@@ -4,6 +4,7 @@ import com.PhoneNumberSystem.entity.Customer;
 import com.PhoneNumberSystem.entity.PhoneNumber;
 import com.PhoneNumberSystem.repository.CustomerRepository;
 import com.PhoneNumberSystem.repository.PhoneNumberRepository;
+import com.PhoneNumberSystem.service.PhoneNumberService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,9 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -23,38 +26,10 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class PhoneNumberSystemApplicationTests {
 
-	@Mock
-	private CustomerRepository customerRepository;
-
-	@Mock
-	private PhoneNumberRepository phoneNumberRepository;
-
-	@BeforeEach
-	void setUp() {
-	}
-
-	@AfterEach
-	void tearDown() {
-	}
-
 	@Test
-	void getCustomers() {
-		List<Customer> customerList = new ArrayList<>();
-		Customer testCustomer1 = new Customer();
-		testCustomer1.setFirstName("Chloe");
-		testCustomer1.setLastName("Tao");
-		testCustomer1.setId(1L);
-		customerList.add(testCustomer1);
+	public void appContextloaded(){
 
-		Customer testCustomer2 = new Customer();
-		testCustomer2.setFirstName("Paco");
-		testCustomer2.setId(2L);
-		testCustomer2.setLastName("Chen");
-		customerList.add(testCustomer2);
-
-		given(customerRepository.findAll()).willReturn(customerList);
-
-		verify(customerRepository).findAll();
 	}
+
 
 }

@@ -26,7 +26,7 @@ public class Customer {
     private String lastName;
 
     @OneToMany
-    @JoinColumn(name = "customerId")
+   // @JoinColumn(name = "customerId")
     @JsonProperty("phoneNumbers")
     private Set<PhoneNumber> phoneNumbers = new HashSet<>();
 

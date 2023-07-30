@@ -12,25 +12,24 @@ import java.util.List;
 @Service
 public class PhoneNumberServiceImpl implements PhoneNumberService{
 
-    @Autowired
-    PhoneNumberRepository phoneNumberRepository;
-    CustomerRepository customerRepository;
+    private PhoneNumberRepository phoneNumberRepository;
+    private CustomerRepository customerRepository;
 
     @Override
-    public List<PhoneNumber> getCustomerPhoneNumber(Long customerId) {
+    public List<PhoneNumber> getCustomerPhoneNumbers(Long customerId) {
         Customer customer = customerRepository.findById(customerId).get();
         return (List<PhoneNumber>) customer.getPhoneNumbers();
     }
 
     @Override
-    public List<PhoneNumber> getAllPhoneNumber() {
+    public List<PhoneNumber> getAllPhoneNumbers() {
         return phoneNumberRepository.findAll();
     }
 
-    @Override
-    public List<Customer> getAllCustomer() {
-        return customerRepository.findAll();
-    }
+//    @Override
+//    public List<Customer> getAllCustomer() {
+//        return customerRepository.findAll();
+//    }
 
     @Override
     public void activatePhoneNumber(Long phoneNumberId) {
