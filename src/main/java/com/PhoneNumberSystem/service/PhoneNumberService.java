@@ -8,6 +8,6 @@ import java.util.List;
 public interface PhoneNumberService {
     List<PhoneNumber> getCustomerPhoneNumbers(@PathVariable("id") Long customerId);
     List<PhoneNumber> getAllPhoneNumbers();
-    //TODO: List<Customer> getAllCustomer();
     void activatePhoneNumber(@PathVariable("id") Long id);
+    //TODO: List<Customer> getAllCustomer();
 }
