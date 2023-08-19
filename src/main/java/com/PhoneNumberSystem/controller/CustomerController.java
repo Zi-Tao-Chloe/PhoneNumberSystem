@@ -22,7 +22,5 @@ public class CustomerController {
         return ResponseEntity.ok(phoneNumberServiceImpl.getCustomerPhoneNumbers(customer_id));
     }
 
-//    @GetMapping(value = "/customers", produces = {MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<?> getAllCustomers() {return ResponseEntity.ok(phoneNumberServiceImpl.getAllCustomer());}
 
 }

@@ -5,9 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -28,6 +27,6 @@ public class Customer {
     @OneToMany
    // @JoinColumn(name = "customerId")
     @JsonProperty("phoneNumbers")
-    private Set<PhoneNumber> phoneNumbers = new HashSet<>();
+    private List<PhoneNumber> phoneNumbers = new ArrayList<>();
 
 }

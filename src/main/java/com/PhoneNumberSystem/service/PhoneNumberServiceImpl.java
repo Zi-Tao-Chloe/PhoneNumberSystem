@@ -2,32 +2,20 @@ package com.PhoneNumberSystem.service;
 
 import com.PhoneNumberSystem.entity.Customer;
 import com.PhoneNumberSystem.entity.PhoneNumber;
-import com.PhoneNumberSystem.exception.NotFoundException;
 import com.PhoneNumberSystem.repository.CustomerRepository;
 import com.PhoneNumberSystem.repository.PhoneNumberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class PhoneNumberServiceImpl implements PhoneNumberService{
 
-    @Autowired
-    private PhoneNumberRepository phoneNumberRepository;
+    private final PhoneNumberRepository phoneNumberRepository;
 
-    @Autowired
-    private CustomerRepository customerRepository;
-
-
-    @Override
-    public List<PhoneNumber> getCustomerPhoneNumbers(Long customerId) {
-        Customer customer = customerRepository.findById(customerId).get();
-                //.orElseThrow(() -> new NotFoundException("Customer not found with id: " + customerId));
-
-        return (List<PhoneNumber>) customer.getPhoneNumbers();
-    }
-
+    private final CustomerRepository customerRepository;
 
     @Override
     public List<PhoneNumber> getAllPhoneNumbers() {
@@ -35,13 +23,17 @@ public class PhoneNumberServiceImpl implements PhoneNumberService{
     }
 
     @Override
-    public void activatePhoneNumber(Long phoneNumberId) {
-        PhoneNumber phoneNumber = phoneNumberRepository.findById(phoneNumberId).get();
+    public List<PhoneNumber> getCustomerPhoneNumbers(long customerId) {
+        Customer customer = customerRepository.findById(customerId);
+
+        return customer.getPhoneNumbers();
+    }
+
+    @Override
+    public void activatePhoneNumber(long phoneNumberId) {
+        PhoneNumber phoneNumber = phoneNumberRepository.findById(phoneNumberId);
         phoneNumber.setActivated(true);
     }
 
-//  public List<Customer> getAllCustomer() {
-//      return customerRepository.findAll();
-//  }
 
 }
