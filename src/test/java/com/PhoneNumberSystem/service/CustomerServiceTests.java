@@ -65,4 +65,28 @@ class CustomerServiceTests {
         verify(customerRepository, times(1)).findById(CUSTOMER_ID);
     }
 
+    @Test
+    public void CustomerService_Create_ReturnCreatedCustomer() {
+
+        // given
+        List<PhoneNumber> phoneNumberList = new ArrayList<>();
+        PhoneNumber phoneNumber1 = new PhoneNumber(5L, "0406961127", 1L, false);
+        PhoneNumber phoneNumber2 = new PhoneNumber(6L, "0406961128", 1L, false);
+        PhoneNumber phoneNumber3 = new PhoneNumber(7L, "0406961128", 1L, false);
+        phoneNumberList.add(phoneNumber1);
+        phoneNumberList.add(phoneNumber2);
+        phoneNumberList.add(phoneNumber3);
+
+        Customer customer1 = new Customer(1L, "Chloe", "Tao", phoneNumberList);
+
+
+        // when
+        when(customerRepository.save(customer1)).thenReturn(customer1);
+
+        Customer customer = customerServiceImpl.create(customer1);
+
+        // then
+        Assertions.assertThat(customer).isNotNull();
+
+    }
 }

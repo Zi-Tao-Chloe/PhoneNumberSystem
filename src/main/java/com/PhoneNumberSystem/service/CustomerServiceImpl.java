@@ -14,6 +14,10 @@ public class CustomerServiceImpl implements CustomerService{
     private final CustomerRepository customerRepository;
 
     @Override
+    public Customer create(Customer customer){
+        return customerRepository.save(customer);
+    }
+    @Override
     public List<PhoneNumber> getCustomerPhoneNumbers(long customerId) {
         Customer customer = customerRepository.findById(customerId);
 

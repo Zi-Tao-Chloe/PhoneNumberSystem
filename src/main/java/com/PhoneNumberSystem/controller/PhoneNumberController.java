@@ -1,5 +1,6 @@
 package com.PhoneNumberSystem.controller;
 
+import com.PhoneNumberSystem.entity.PhoneNumber;
 import com.PhoneNumberSystem.service.PhoneNumberServiceImpl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,11 @@ public class PhoneNumberController {
     @GetMapping(value = "/phoneNumbers", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> getAllPhoneNumbers() {
         return ResponseEntity.ok(phoneNumberServiceImpl.getAllPhoneNumbers());
+    }
+
+    @PostMapping("/store")
+    public PhoneNumber addPhoneNumber(@RequestBody PhoneNumber phoneNumber){
+        return phoneNumberServiceImpl.create(phoneNumber);
     }
 
     @PutMapping(value = "/phoneNumbers/{phoneNumber_id}", produces = {MediaType.APPLICATION_JSON_VALUE})

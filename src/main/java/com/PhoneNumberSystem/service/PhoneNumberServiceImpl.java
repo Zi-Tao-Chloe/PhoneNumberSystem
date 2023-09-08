@@ -1,5 +1,6 @@
 package com.PhoneNumberSystem.service;
 
+import com.PhoneNumberSystem.controller.PhoneNumberController;
 import com.PhoneNumberSystem.entity.PhoneNumber;
 import com.PhoneNumberSystem.repository.PhoneNumberRepository;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,11 @@ import java.util.List;
 public class PhoneNumberServiceImpl implements PhoneNumberService{
 
     private final PhoneNumberRepository phoneNumberRepository;
+
+    @Override
+    public PhoneNumber create(PhoneNumber phoneNumber){
+        return phoneNumberRepository.save(phoneNumber);
+    }
 
     @Override
     public List<PhoneNumber> getAllPhoneNumbers() {

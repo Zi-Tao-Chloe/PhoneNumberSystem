@@ -1,6 +1,7 @@
 package com.PhoneNumberSystem.service;
 import com.PhoneNumberSystem.entity.PhoneNumber;
 import com.PhoneNumberSystem.repository.PhoneNumberRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -88,6 +89,22 @@ class PhoneNumberServiceTests {
         PhoneNumber phoneNumberTest = phoneNumberRepository.findById(PHONE_NUMBER_ID);
         assertTrue(phoneNumberTest.isActivated());
         verify(phoneNumberRepository, times(2)).findById(PHONE_NUMBER_ID);
+    }
+
+    @Test
+    public void PhoneNumberService_Create_ReturnCreatedPhoneNumber() {
+
+        // given
+        PhoneNumber phoneNumber1 = new PhoneNumber(1L, "0406961127", 1L, false);
+
+        // when
+        when(phoneNumberRepository.save(phoneNumber1)).thenReturn(phoneNumber1);
+
+        PhoneNumber phoneNumber = phoneNumberServiceImpl.create(phoneNumber1);
+
+        // then
+        Assertions.assertThat(phoneNumber).isNotNull();
+
     }
 
 

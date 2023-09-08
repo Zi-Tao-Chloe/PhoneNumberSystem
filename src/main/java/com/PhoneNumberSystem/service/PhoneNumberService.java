@@ -7,4 +7,5 @@ import java.util.List;
 public interface PhoneNumberService {
     List<PhoneNumber> getAllPhoneNumbers();
     void activatePhoneNumber(@PathVariable("id") long id);
+    PhoneNumber create(PhoneNumber phoneNumber);
 }
