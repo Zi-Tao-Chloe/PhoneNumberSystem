@@ -82,12 +82,12 @@ class PhoneNumberServiceTests {
         PhoneNumber phoneNumber = new PhoneNumber(1L, "0406961127", 1L, false);
 
         // when
-        when(phoneNumberRepository.findById(PHONE_NUMBER_ID)).thenReturn(phoneNumber);
+        when(phoneNumberRepository.findById(PHONE_NUMBER_ID)).thenReturn(Optional.of(phoneNumber));
         phoneNumberServiceImpl.activatePhoneNumber(PHONE_NUMBER_ID);
 
         // then
-        PhoneNumber phoneNumberTest = phoneNumberRepository.findById(PHONE_NUMBER_ID);
-        assertTrue(phoneNumberTest.isActivated());
+        Optional<PhoneNumber> phoneNumberTest = phoneNumberRepository.findById(PHONE_NUMBER_ID);
+        assertTrue(phoneNumberTest.get().isActivated());
         verify(phoneNumberRepository, times(2)).findById(PHONE_NUMBER_ID);
     }
 

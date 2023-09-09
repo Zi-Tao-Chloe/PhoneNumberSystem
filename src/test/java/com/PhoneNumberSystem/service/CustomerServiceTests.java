@@ -55,7 +55,7 @@ class CustomerServiceTests {
          that behavior first.*/
 
         // when
-        when(customerRepository.findById(CUSTOMER_ID)).thenReturn(customer);
+        when(customerRepository.findById(CUSTOMER_ID)).thenReturn(Optional.of(customer));
 
         List<PhoneNumber> phoneNumbers = customerServiceImpl.getCustomerPhoneNumbers(CUSTOMER_ID);
 
@@ -64,6 +64,7 @@ class CustomerServiceTests {
         assertEquals(3, phoneNumbers.size());
         verify(customerRepository, times(1)).findById(CUSTOMER_ID);
     }
+
 
     @Test
     public void CustomerService_Create_ReturnCreatedCustomer() {

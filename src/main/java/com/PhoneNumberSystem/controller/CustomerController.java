@@ -3,6 +3,8 @@ package com.PhoneNumberSystem.controller;
 import com.PhoneNumberSystem.entity.Customer;
 import com.PhoneNumberSystem.entity.PhoneNumber;
 import com.PhoneNumberSystem.service.CustomerServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/v1")
 public class CustomerController {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
     private final CustomerServiceImpl customerServiceImpl;
 
     public CustomerController(final CustomerServiceImpl customerServiceImpl){

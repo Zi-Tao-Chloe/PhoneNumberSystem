@@ -21,8 +21,9 @@ public class PhoneNumberController {
     }
 
     @PostMapping("/store")
-    public PhoneNumber addPhoneNumber(@RequestBody PhoneNumber phoneNumber){
-        return phoneNumberServiceImpl.create(phoneNumber);
+    public ResponseEntity<?>  addPhoneNumber(@RequestBody PhoneNumber phoneNumber){
+        PhoneNumber savedPhoneNumber = phoneNumberServiceImpl.create(phoneNumber);
+        return ResponseEntity.ok(savedPhoneNumber);
     }
 
     @PutMapping(value = "/phoneNumbers/{phoneNumber_id}", produces = {MediaType.APPLICATION_JSON_VALUE})

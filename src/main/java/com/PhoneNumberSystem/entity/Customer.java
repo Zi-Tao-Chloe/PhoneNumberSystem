@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Customer {
     @Id
-    @GeneratedValue
+    @Column(unique = true)
     private Long id; //each customer has a unique and none 0 id
 
     @JsonProperty("firstName")
@@ -24,9 +24,9 @@ public class Customer {
     @JsonProperty("lastName")
     private String lastName;
 
-    @OneToMany
-    //@JoinColumn(name = "customerId")
-    @JsonProperty("phoneNumbers")  
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonProperty("phoneNumbers")
     private List<PhoneNumber> phoneNumbers = new ArrayList<>();
+
 
 }
